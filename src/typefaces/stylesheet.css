@@ -1,0 +1,9 @@
+
+@font-face {
+    font-family: 'gt_america_standard_light';
+    src: url('GT-America-Standard-Light.woff2') format('woff2'),
+         url('GT-America-Standard-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

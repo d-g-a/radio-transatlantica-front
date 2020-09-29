@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'gt_america_standard_light';
+    src: url('./typefaces/GT-America-Standard-Light.woff2') format('woff2'),
+         url('./typefaces/GT-America-Standard-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family:'gt_super_textbook_italic' ;
+    src: url('./typefaces/gt-super-text-book-italic-webfont.woff2') format('woff2'),
+         url('./typefaces/gt-super-text-book-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'gt_super_textbook';
+    src: url('./typefaces/gt-super-text-book-webfont.woff2') format('woff2'),
+         url('./typefaces/gt-super-text-book-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+  margin: 0;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "gt_america_standard_light";
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

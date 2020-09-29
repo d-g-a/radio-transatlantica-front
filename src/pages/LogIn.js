@@ -6,11 +6,14 @@ import { login } from "../services"
 import { MyContext } from "../context"
 import { FacebookLoginButton, GoogleLoginButton} from "react-social-login-buttons";
 
-let baseURL = "http://localhost:3000"
+let baseURL;
+// = "http://localhost:3000"
 
-// process.env.NODE_ENV === "production"
-//   ? (baseURL = "http://localhost:3000")
-//   : (baseURL = "https://murmuring-reaches-95521.herokuapp.com")
+process.env.NODE_ENV === "production"
+
+  ? (baseURL = "https://radio-transatlantica.herokuapp.com/") 
+  : (baseURL = "http://localhost:3000"
+)
 
 
   

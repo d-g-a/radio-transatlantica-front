@@ -34,8 +34,8 @@ const Canvas = props => {
 
   window.addEventListener("mousemove", event => {
 
-    setAimX(event.pageX)
-    setAimY(event.pageY)
+    setAimX(event.pageX-100)
+    setAimY(event.pageY-100)
 
 },[])
 

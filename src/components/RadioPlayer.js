@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import ReactPlayer from 'react-player/lazy'
 import styled from "styled-components"
+import { useTranslation } from "react-i18next"
 
 const RadioPlayerStyled = styled.div`
 
@@ -63,6 +64,10 @@ video{
 
 function RadioPlayer() {
 
+    const { t, i18n } = useTranslation()
+  
+
+
     const [playMX, setPlayMX] = useState(false)
     const [playBCN, setPlayBCN] = useState(false)
 
@@ -86,7 +91,7 @@ function RadioPlayer() {
                     <img onClick={playButtonMX} src="https://res.cloudinary.com/dieglitter/image/upload/v1601068141/radio-shows/PLAY-BLACK_apz6vv.svg" alt="Play" className="play"/>   
                     :  <img onClick={playButtonMX} src="https://res.cloudinary.com/dieglitter/image/upload/v1601068141/radio-shows/STOP_ORANGE_iy4dic.svg" alt="Stop" className="stop"/> }  
 
-                    <p>LIVE FROM MEXICO CITY</p>
+                    <p>{t("radio-mex")}</p>
 
                 </div>
 
@@ -96,7 +101,7 @@ function RadioPlayer() {
                     <img onClick={playButtonBCN} src="https://res.cloudinary.com/dieglitter/image/upload/v1601068141/radio-shows/PLAY-BLACK_apz6vv.svg" alt="Play" className="play"/>   
                     : <img onClick={playButtonBCN} src="https://res.cloudinary.com/dieglitter/image/upload/v1601068141/radio-shows/STOP_ORANGE_iy4dic.svg" alt="Stop" className="stop"/> }  
 
-                    <p>LIVE FROM BARCELONA</p>
+                    <p>{t("radio-bcn")}</p>
 
                 </div>
 
@@ -109,6 +114,7 @@ function RadioPlayer() {
                 { playMX ? <ReactPlayer
                 url="https://airelibremusicip.nyx.mx:8443/stream"
                 playing={true}
+                volume={0.5}
                 /> :  <ReactPlayer
                 url="https://airelibremusicip.nyx.mx:8443/stream"
                 playing={false}
@@ -117,6 +123,7 @@ function RadioPlayer() {
                 { playBCN ? <ReactPlayer
                 url="https://www.youtube.com/watch?v=5qap5aO4i9A"
                 playing={true}
+                volume={0.5}
                 /> :  <ReactPlayer
                 url="https://www.youtube.com/watch?v=5qap5aO4i9A"
                 playing={false}

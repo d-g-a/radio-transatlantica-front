@@ -278,6 +278,7 @@ a:hover{
                         { play ? 
                         <ReactPlayer
                         className="ReactPlayer"
+                        volume={0.5}
                         url={show.soundFile}
                         playing={true}
                         /> :  

@@ -54,7 +54,7 @@ function GuestForm() {
             image: imageUrl,
             bio: bioInput.value
         } )
-        history.push("/")
+        history.push("/explore")
       }
 
 

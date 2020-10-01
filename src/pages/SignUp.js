@@ -5,7 +5,16 @@ import {Link, Redirect} from 'react-router-dom'
 import { Form, Input, Button} from 'antd';
 import { signup } from "../services/index"
 
+let baseURL;
+
+process.env.NODE_ENV === "production"
+
+  ? (baseURL = "https://radio-transatlantica.herokuapp.com") 
+  : (baseURL = "http://localhost:3000"
+)
+
 const SignUpStyled = styled.div`
+
 
 background-color: black;
 color: white;
@@ -19,7 +28,7 @@ align-items: center;
     background-color: black;
     color: white;
     width: 400px;
-    height: 400px;
+    height: 480px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,6 +59,16 @@ p{
     margin-bottom: 24px;
 }
 
+.facebook{
+    background-color: #0A83ED;
+    color: white;    
+}
+
+.facebook>a{
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+}
 
 .rt-logo{
     width: 160px;
@@ -97,6 +116,9 @@ function SignUp( {history} ) {
             </Button>
             </Form.Item>
          </Form>
+         <button className="button facebook">
+            <a href={`${baseURL}/auth/facebook`}>Facebook</a>
+         </button>
 
          <p>If you already have an account <Link to="/login">log in here!</Link></p>
 

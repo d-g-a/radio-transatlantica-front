@@ -8,12 +8,8 @@ const EditorialDetailsStyled = styled.div`
 display:flex;
 flex-direction: column;
 background-color: white;
-padding: 72px 0 0 0 ;
-margin: 0;
+margin-top: 80px;
 
-p{
-    font-family: 'gt_super_textbook';
-}
 
 .banner-pic-div{
     width: 100vw;
@@ -21,35 +17,113 @@ p{
 }
 
 .banner-pic{
-    width: inherit;
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;
 }
 
-
 .main-titles{
     width: 100vw;
-    height: 50vh;
 }
 
+/* PARAMETROS */
 .headline{
-    font-size: 80px;
-    margin: 80px;
-    text-align: left;
-    text-transform: uppercase;
-    font-family: 'gt_america_standard_light';
+    margin: 32px;
 }
+/* HEADLINE SIZE */
+
+.Small{
+font-size: 60px;
+
+}
+
+.Medium{
+    font-size: 80px;
+    
+}
+
+.Large{
+    font-size: 100px;
+    
+}
+
+.Extra-Large{
+    font-size: 120px;
+}
+
+/* HEADLINE TYPEFACE */
+
+.Sans-Serif{
+    font-family: 'gt_america_standard_light';
+    text-transform: uppercase;
+}
+
+.Serif{
+    font-family: 'gt_super_textbook_italic';
+    text-transform: lowercase;
+}
+
+/* HEADLINE WIDTH */
+
+.fifty{
+    width: 50%;
+}
+
+.seventy-five{
+    width: 75%;
+}
+
+.hundred{
+    width: 100%;
+}
+
+/* HEADLINE ALIGMENT*/
+
+.Left{
+    text-align: left;
+}
+
+.Center{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+/* BODY IMAGE */
+
+.body-image-1{
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.body-image-2{
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 80px;
+}
+
 
 .subtitle{
     font-size: 40px;
-    margin: 40px 320px;
+    margin: 32px 280px 16px;
+    text-align: left;
     font-family:'gt_super_textbook_italic';
     text-transform: lowercase;
 }
 
+.bodytext-div-1{
+    width: 100vw;
+    height: auto;
+}
+
 .bodytext{
-    margin: 160px 480px;
+    margin: 120px 400px;
     text-align: left;
     font-size: 20px;
+    font-family: 'gt_super_textbook';
 }
 
 .body-image-1{
@@ -71,11 +145,18 @@ text-transform: lowercase;
 }
 
 .credits>a{
+    text-decoration: none;
+    color: black;
+    margin-bottom: 8px;
+}
+
+.credits>a>img{
     margin-bottom: 8px;
 }
 
 .instagram{
     width:12px;
+    
 }
 
 
@@ -108,52 +189,66 @@ function EditorialDetails({
             { editorial ? (
 
                 <>
+        
                   <div className="banner-pic-div">
-                <img src={editorial.bannerImage} alt="banner" className="banner-pic"/>
-            </div>   
+                     <img src={editorial.bannerImage} alt="banner" className="banner-pic"/>
+                 </div>   
 
-            <div className="main-titles"> 
-            
-            <h1 className="headline">{editorial.headline}</h1>
+                 
 
-            <p className="subtitle">{editorial.subHeadline}</p>
+                <div className={`main-titles ${editorial.headlineAlignment}`}> 
 
-            <p>Published: {editorial.date}</p>
+                    <p  className={`${editorial.headlineSize}  
+                                    ${editorial.headlineTypeface} 
+                                    ${editorial.headlineWidth} 
+                                    
+                                    headline
+                                    `}
+                        >
+                        {editorial.headline}
+                        </p>
 
-            </div>         
+                </div>   
 
-            <div className="bodytext-div-1">
-                <p className="bodytext">
-                    {editorial.bodyText}
-                </p>
+                <div className={``}>
+                      <p className="subtitle">{editorial.subHeadline}</p>
+                 </div>      
 
-            </div>
+                <div className="bodytext-div-1">
+                    <p className="bodytext">
+                        {editorial.bodyText}
+                    </p>
+                </div>
 
-            <div className="body-image-1-div">
-                <img src={editorial.bodyImage1} alt=""  className="body-image-1"/>
-            </div>
+                <div className="body-image-1-div">
+                    <img src={editorial.bodyImage1} alt="" className="body-image-1"/>
+                </div>
 
-            <div className="bodytext-div-2">
-                <p className="bodytext">
-                     {editorial.bodyText}
-                </p>
+                <div className="bodytext-div-2">
+                    <p className="bodytext">
+                        {editorial.bodyText}
+                    </p>
+                </div>
 
-            </div>
+                <div className="body-image-2-div">
+                    <img src={editorial.bodyImage2} alt=""  className="body-image-2"/>
+                </div>
 
-            <div className="body-image-2-div">
-                <img src={editorial.bodyImage2} alt=""  className="body-image-2"/>
-            </div>
+                <div className="credits">
+                    
+                    <p>category: {editorial.articleCategory}</p>
+                    <p>writer: {editorial.writer}</p>
+                    <p>{editorial.writerBio}</p>
+                    <a href={`https://www.instagram.com/${editorial.instagram}`}>
+                        <img 
+                        src="https://res.cloudinary.com/dieglitter/image/upload/v1601159256/radio-shows/instagram_1_s8fofc.svg" 
+                        alt="instagram" 
+                        className="instagram"/>
+                    </a>
+                    <p>Photographs by: {editorial.photographer}</p>  
+                    <p>Published: {editorial.date}</p>
 
-            <div className="credits">
-                
-                <p>{editorial.articleCategory}</p>
-                <p>{editorial.writer}</p>
-                <a>Follow {editorial.writer}<img src="https://res.cloudinary.com/dieglitter/image/upload/v1601159256/radio-shows/instagram_1_s8fofc.svg" alt="" className="instagram"/></a>
-                <p>{editorial.writerBio}</p>
-                <p>{editorial.photographer}</p>  
-                <p>Published: {editorial.date}</p>
-
-            </div>
+                </div>
                 </>
             ) : (
                 <p>loading</p>

@@ -1,4 +1,5 @@
-  import React, {useState,  useEffect} from 'react'
+  import React, {useState,  useEffect, useContext} from 'react'
+  import { MyContext } from "../context"
   import styled from "styled-components"
   import {getShow} from "../services/show"
   import ReactPlayer from "react-player"
@@ -7,13 +8,21 @@
  
 
   const ShowDetailsStyled = styled.div`
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;  
-  margin-top: 80px;
-  color: black;
-  height: 100vh;
+
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;  
+    margin-top: 80px;
+    color: black;
+    height: 100vh;
+
+
+  .info-image-player{
+      display: flex;
+      flex-direction: row;
+
+  }
 
   p{
       color: black;
@@ -22,7 +31,11 @@
 
 .full-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
+    width: 50vw;
 
 }
 
@@ -32,30 +45,31 @@
     justify-content: flex-start;
     align-items: flex-start;
     width: 50vw;
-    padding: 32px 0 0 32px;;
 } 
 
 .image-container{
     width: 50vw;
+    height: 100vh;
     
 }
 
-img{
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      }
-
-
 
 .show-title{
-font-size: 80px;
+font-size: 72px;
+text-align: left;
+text-transform: uppercase;
+padding: 24px 0 0 24px;
+margin: 0;
+line-height: 1;
 }
 
 a{
-   font-size: 48px;
+   font-size: 40px;
    text-decoration: none;
    color: black;
+   padding: 0 0 16px 24px;
+   margin-bottom: 16px;;
+   line-height: 1;
 }
 
 a:hover{
@@ -63,32 +77,51 @@ a:hover{
 }
 
 .show-location{
+    text-transform: uppercase;
+    color: #FF5C00;
+    padding: 0 0 16px 24px;
+    margin-top: 16px;
+    font-size: 24px;
 
 }
 
 .show-date{
+    font-size: 16px;
+    margin-left: 32px;
 
 }
 
 .show-genre{
+    margin-top: 16px;   
+    margin-left: 32px;
+    border: 2px solid #FF5C00;
+    padding: 4px;
+    color: white;
+    background-color: black;
 
 }
 
 .show-image{
+    width: 100%;
+      height: 100%;
+      object-fit: cover;
 
 }
-
 
   .ReactPlayer {
       display: none;
   }
 
   .play {
-      width: 24px;
+      width: 40px;
+      margin-top:16px;
+      margin-left: 32px;
   }
 
   .stop{
-    width: 24px;
+    width: 40px;
+    margin-top:16px;
+    margin-left: 32px;
   }
 
   .loader{
@@ -96,18 +129,38 @@ a:hover{
     margin-left: 32px;
 }
 
+.love-button{
+    margin-top:16px;
+    margin-left:32px;
+}
+
+.login-love{
+    margin-top: 16px;
+    margin-left:32px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
 .button{
     background-color: white;
-    width: 160px;
+    width: 240px;
     padding:8px;
+    margin-bottom: 16px;
 }
 
 .unlove {
     background-color: red;
-    width: 160px;
+    width:  240px;
     border: none;
     color: white;
     padding:8px;
+}
+
+.play-love{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 
@@ -123,8 +176,15 @@ a:hover{
     // const[showsLoved,setShowsLoved] = useState("")
     const [play,setPlay] = useState(false)
 
+    const { user } = useContext(MyContext)
 
-    async function submitForm() {
+    // if(let i = 0; i <= user.showsLoved.length; i++){
+    //     setLove(true)
+        
+    // }
+
+
+    async function submitButton() {
         await addShowLoved({
             showsLoved: showId
         })
@@ -134,11 +194,11 @@ a:hover{
       }
       
       function loveButton(){
-        setLove(!love)
-        submitForm()
+        setLove(true)
+        submitButton()
     }
 
-    async function submitDeleteForm(e) {
+    async function submitDeleteButton() {
         await deleteShowLoved({
             showsLoved: showId
         })
@@ -147,9 +207,9 @@ a:hover{
         })   
       }
       
-    function unloveButton(e){
-        setLove(!love)
-        submitDeleteForm(e)
+    function unloveButton(){
+        setLove(false)
+        submitDeleteButton()
     }
 
     function playButton(){
@@ -168,68 +228,78 @@ a:hover{
     
       return (
           <ShowDetailsStyled>
-
               { show  ? (
-               <div className="full-container">   
-              <div className="container-info">
-                  <p className="show-title">{show.title}</p>
-                  <p><Link to={`/guests/${show.guest._id}`}>by {show.guest.name}</Link></p>
-                  <p className="show-location">streamed from {show.location}</p>
-                  <p className="show-date">{show.date}</p>
-                  <p className="show-genre">{show.genre}</p>
-                  <p>{show._id}</p>
+                <div className="info-image-player">
+                    <div className="full-container">   
+                        <div className="container-info">
+                            <p className="show-title">{show.title}</p>
+                            <p><Link to={`/guests/${show.guest._id}`}>by {show.guest.name}</Link></p>
+                            <p className="show-location">streamed from {show.location}</p>
+                            <p className="show-date">{show.date}</p>
+                            <p className="show-genre">{show.genre}</p>
+                        </div>
+
+                    <div className="play-love">
+                  
+                            
+                            {user ? 
+                            ( <div className="love-button">
+                                {!love ? (  
+                                    <button
+                                    className="button"
+                                    name="showsLoved" 
+                                    id="showsLoved"
+                                    // value={showId} 
+                                    onClick={loveButton}
+                                    // onSubmit={submitForm} 
+                                    // onChange={e => setShowsLoved(e.target.value)}
+                                    >
+                                        LOVE
+                                    </button>) : (
+                                        <button
+                                        className="unlove"
+                                        onClick={unloveButton}
+                                        // value={showId} 
+                                        id="showsLoved"
+                                        name="showsLoved" 
+                                        >
+                                            LOVED
+                                        </button>
+                                    )} 
+                            </div>) : (<p className="login-love"> Log in to save your favorite shows!</p>)}   
+
+                            { !play ?
+                                <img onClick={playButton} src="https://res.cloudinary.com/dieglitter/image/upload/v1601068141/radio-shows/PLAY-BLACK_apz6vv.svg" alt="Play" className="play"/>   
+                                :  <img onClick={playButton} src="https://res.cloudinary.com/dieglitter/image/upload/v1601068141/radio-shows/STOP_ORANGE_iy4dic.svg" alt="Stop" className="stop"/> } 
+                         
+                    </div>
+
+
+                </div>  
                
               
-
-              { !play ?
-                    <img onClick={playButton} src="https://res.cloudinary.com/dieglitter/image/upload/v1601068141/radio-shows/PLAY-BLACK_apz6vv.svg" alt="Play" className="play"/>   
-                    :  <img onClick={playButton} src="https://res.cloudinary.com/dieglitter/image/upload/v1601068141/radio-shows/STOP_ORANGE_iy4dic.svg" alt="Stop" className="stop"/> } 
-
-                    {!love ? (  
-                    <button
-                    className="button"
-                    name="showsLoved" 
-                    id="showsLoved"
-                    value={showId} 
-                    onClick={loveButton}
-                    // onSubmit={submitForm} 
-                    // onChange={e => setShowsLoved(e.target.value)}
-                    >
-                        LOVE
-                    </button>) : (
-                        <button
-                        className="unlove"
-                        onClick={unloveButton}
-                        >
-                            LOVED
-                        </button>
-                    )} 
-                  
-                         
-              </div>
-              <div className="image-container">
-                <img className="show-image" src={show.image} alt=""/>
-              </div>
-              <div>
-                    { play ? 
-                    <ReactPlayer
-                    className="ReactPlayer"
-                    url={show.soundFile}
-                    playing={true}
-                    /> :  
-                    <ReactPlayer
-                    className="ReactPlayer"
-                    url={show.soundFile}
-                    playing={false}
-                    />}
-                
-              </div>
+                <div className="image-container">
+                    <img className="show-image" src={show.image} alt=""/>
+                </div>
+                {/* Hidden Player */}
+                <div>
+                        { play ? 
+                        <ReactPlayer
+                        className="ReactPlayer"
+                        url={show.soundFile}
+                        playing={true}
+                        /> :  
+                        <ReactPlayer
+                        className="ReactPlayer"
+                        url={show.soundFile}
+                        playing={false}
+                        />}
+                    
+                </div>
               </div >
               ) : (
               <p className="loader">Loading...</p>
-              ) }
-
-              
+              ) }              
               
           </ShowDetailsStyled>
       )

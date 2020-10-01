@@ -3,8 +3,30 @@ import styled from "styled-components"
 
 const AboutStyled = styled.div`
 
-margin: 200px;
+margin-top: 80px;
+background-color: black;
+color: white;
 text-align: left;
+width: 100vw;
+height: 100vh;
+
+
+h1{
+    font-family:'gt_super_textbook_italic';
+    text-transform: lowercase;
+    font-size: 24;
+    padding: 80px 120px 0;
+}
+
+p {
+    font-size: 20px;
+    padding: 16px 120px 80px  ;
+}
+
+.rt-logo{
+    padding: 0 120px 80px  ;
+    width: 200px;
+}
 `
 
 function About() {
@@ -19,6 +41,7 @@ function About() {
             La idea central fue crear una estación de radio llamada Radio Transatlántica basada entre la Ciudad de México y Barcelona. Así como NTS Radio tiene una cabina en Londres y otra en Los Angeles o como Dublab opera entre Los Angeles y Barcelona, mi intención fue crear una estación de radio por internet que exista entre estas dos ciudades.
             <br/><br/>
             El proyecto busca explorar la relación entre dos cabinas separadas por el océano atlántico pero unidas por el mismo servidor y pensadas como un archivo colectivo. </p>
+            <img src="https://res.cloudinary.com/dieglitter/image/upload/v1601151919/radio-shows/rt-logo_white_onfwed.svg" alt="rt-logo" className="rt-logo"/>
             
         </AboutStyled>
     )

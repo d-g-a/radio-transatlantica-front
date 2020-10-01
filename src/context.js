@@ -13,9 +13,7 @@ export default function Provider({children}){
 
     useEffect(()=>{
         async function profile(){
-            const {
-                data : { user }
-            } = await getProfile()
+            const {data : { user }} = await getProfile()
             setContextUser(user)
         }
         profile()

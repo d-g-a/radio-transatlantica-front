@@ -29,7 +29,7 @@ padding-top: 88px;
 }
 
 .sub-headline{
-    font-size:32px;
+    font-size:28px;
     text-transform: lowercase;
     font-family: 'gt_super_textbook_italic' ;
 }

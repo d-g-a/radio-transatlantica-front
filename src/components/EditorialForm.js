@@ -71,6 +71,10 @@ function EditorialForm() {
     const headlineWidthInput = useInput("")
     const headlineAlignmentInput = useInput("")
     const subHeadlineInput = useInput("")
+    const subHeadlineSizeInput = useInput("")
+    const subHeadlineTypefaceInput = useInput("")
+    const subHeadlineWidthInput = useInput("")
+    const subHeadlineAlignmentInput = useInput("")
     const bodyTextInput = useInput("")
     const writerNameInput = useInput("")
     const writerBioInput = useInput("")
@@ -92,6 +96,10 @@ function EditorialForm() {
             headlineWidth: headlineWidthInput.value,
             headlineAlignment: headlineAlignmentInput.value,
             subHeadline: subHeadlineInput.value,
+            subHeadlineSize: subHeadlineSizeInput.value,
+            subHeadlineTypeface: subHeadlineTypefaceInput.value,
+            subHeadlineWidth: subHeadlineWidthInput.value,
+            subHeadlineAlignment: subHeadlineAlignmentInput,
             bannerImage: bannerUrl,
             bodyImage1: bodyPic1Url,
             bodyImage2: bodyPic2Url,
@@ -102,7 +110,7 @@ function EditorialForm() {
             photographer: photographerNameInput.value,
             date: dateInput.value,
          } )
-        history.push("/")
+        history.push("/editorial")
     }
 
  
@@ -203,12 +211,12 @@ function EditorialForm() {
             className="radio"
             {...headlineWidthInput}
             >
-                <input type="radio" id="50%" value="50%" name="headlineWidth"/>
-                <label htmlFor="50%">50%</label>
-                <input type="radio" id="75%" value="75%" name="headlineWidth"/>
-                <label htmlFor="75%">75%</label>
-                <input type="radio" id="100%" value="100%" name="headlineWidth"/>
-                <label htmlFor="100%">100%</label>
+                <input type="radio" id="fifty" value="fifty" name="headlineWidth"/>
+                <label htmlFor="fifty">50%</label>
+                <input type="radio" id="seventy-five" value="seventy-five" name="headlineWidth"/>
+                <label htmlFor="seventy-five">75%</label>
+                <input type="radio" id="hundred" value="hundred" name="headlineWidth"/>
+                <label htmlFor="hundred">100%</label>
             </div>
             <br/>
             <h4>Headline Alignment</h4>
@@ -232,6 +240,56 @@ function EditorialForm() {
             className="text-space"
             {...subHeadlineInput}
             />
+            <br/>
+            <h4>Sub-Headline Size</h4>
+            <div 
+            className="radio" 
+            {...subHeadlineSizeInput}
+            >
+                <input type="radio" id="Small" value="Small" name="subHeadlineSize"/>
+                <label htmlFor="Small">Small</label>
+                <input type="radio" id="Medium" value="Medium" name="subHeadlineSize"/>
+                <label htmlFor="Medium">Medium</label>
+                <input type="radio" id="Large" value="Large" name="subHeadlineSize"/>
+                <label htmlFor="Large">Large</label>
+                <input type="radio" id="Extra-Large" value="Extra-Large" name="subHeadlineSize"/>
+                <label htmlFor="Extra-Large">Extra-Large</label>
+            </div>
+            <br/>
+            <h4>Sub-Headline Typeface</h4>
+            <div 
+            className="radio"
+            {...subHeadlineTypefaceInput}
+            >
+                <input type="radio" id="Serif" value="Serif" name="subHeadlineTypeface"/>
+                <label htmlFor="Serif">Serif</label>
+                <input type="radio" id="Sans-Serif" value="Sans-Serif" name="subHeadlineTypeface"/>
+                <label htmlFor="Sans-Serif">Sans-Serif</label>
+            </div>
+            <br/>
+            <h4>Sub-Headline Width</h4>
+            <div 
+            className="radio"
+            {...subHeadlineWidthInput}
+            >
+                <input type="radio" id="fifty" value="fifty" name="subHeadlineWidth"/>
+                <label htmlFor="fifty">50%</label>
+                <input type="radio" id="seventy-five" value="seventy-five" name="subHeadlineWidth"/>
+                <label htmlFor="seventy-five">75%</label>
+                <input type="radio" id="hundred" value="hundred" name="subHeadlineWidth"/>
+                <label htmlFor="hundred">100%</label>
+            </div>
+            <br/>
+            <h4>Sub-Headline Alignment</h4>
+            <div 
+            className="radio"
+            {...subHeadlineAlignmentInput}
+            >
+                <input type="radio" id="Left" value="Left" name="subHeadlineAlignment"/>
+                <label htmlFor="Left">Left</label>
+                <input type="radio" id="Center" value="Center" name="subHeadlineAlignment"/>
+                <label htmlFor="Center">Center</label>
+            </div>
             <br/>
             <h4>Body-Text</h4>
             <textarea 
@@ -284,12 +342,12 @@ function EditorialForm() {
             {...writerBioInput}
             />
             <br/>
-            <h4>Writer's Instagram Account</h4>
+            <h4>Writer's Instagram Handle without @ </h4>
             <input 
             type="text" 
             name="instagram" 
             id="instagram" 
-            placeholder="@radiotransatlantica" 
+            placeholder="radiotransatlantica" 
             className="text-space"
             {...writerInstagramInput}
             />

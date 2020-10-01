@@ -1,17 +1,20 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {MyContext} from "../context"
 import ShowForm from '../components/ShowForm'
 import EditorialForm from '../components//EditorialForm'
 import GuestForm from '../components/GuestForm'
+import MakeAdmin from '../components/MakeAdmin'
 import styled from 'styled-components'
 import {logOut} from '../services/index'
 import { Redirect } from 'react-router-dom'
+import {getShows} from '../services/show'
+
 
 const AdminStyles = styled.div`
 
 background-color: #FF5C00;
 width: 100vw;
-height: 1680px;
+height: 1920px;
 display: flex;
 flex-direction: row;
 justify-content: flex-start;
@@ -66,24 +69,41 @@ function Admin({history}) {
     const [newShow, setNewShow] = useState(false)
     const [newEditorial, setNewEditorial] = useState(false)
     const [newGuest, setNewGuest] = useState(false)
+    const [newAdmin, setNewAdmin] = useState(false)
+
+    const {shows,setShows} = useState(null)
+
+    // async function fetchShows() {
+    //     const {data: {shows}} = await getShows()
+    //     setShows(shows)
+    //     console.log(shows)
+    // }
 
     
     function newShowForm(){
         setNewShow(!newShow)
         setNewEditorial(false)
         setNewGuest(false)
-    
+        setNewAdmin(false)
     }
 
     function newEditorialForm(){
         setNewEditorial(!newEditorial) 
         setNewShow(false)
         setNewGuest(false)
-
+        setNewAdmin(false)
     }
 
     function newGuestForm(){
         setNewGuest(!newGuest)
+        setNewEditorial(false)
+        setNewShow(false)
+        setNewAdmin(false)
+    }
+
+    function newAdminForm(){
+        setNewAdmin(!newAdmin)
+        setNewGuest(false)
         setNewEditorial(false)
         setNewShow(false)
     }
@@ -93,6 +113,10 @@ function Admin({history}) {
         clearContextUser()
         history.push("/")
     }
+
+    // useEffect(() => {
+    //     fetchShows()
+    // }, [])
 
 
   
@@ -107,8 +131,7 @@ function Admin({history}) {
                     {!newShow ? (<button onClick={newShowForm} >Add New Show</button>) : (<button onClick={newShowForm} >Cancel</button>)}
                     {!newGuest ? (<button onClick={newGuestForm} >Create New Guest</button>) : (<button onClick={newGuestForm} >Cancel</button>)}
                     {!newEditorial ? (<button onClick={newEditorialForm} >Add New Editorial</button>) : (<button onClick={newEditorialForm} >Cancel</button>)}
-                    <button>See All Shows</button>
-                    <button>See All Editorials</button>
+                    {!newAdmin ? (<button onClick={newAdminForm}>Add New Admin</button>) : (<button onClick={newAdminForm} >Cancel</button>)}
                     <button onClick={logOutProcess}>LOG OUT</button>
                 </div>
             </div>
@@ -120,7 +143,19 @@ function Admin({history}) {
                 ( <EditorialForm/> )} 
                 {newGuest && 
                 ( <GuestForm/> )}
+                { newAdmin && 
+                (<MakeAdmin/>)}
             </div>
+
+            {/* <div>
+                <p>All Shows</p>
+                {shows ? (shows.map( show => (
+                  <p>{show.title}</p>
+              ))
+              )
+              :(<p>Loading</p>)}
+
+            </div> */}
 
     
         </AdminStyles>

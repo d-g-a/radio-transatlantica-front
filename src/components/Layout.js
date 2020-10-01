@@ -12,8 +12,6 @@ Nav{
 
 }
 
-
-
 `
 
 function Layout(props) {

@@ -80,7 +80,7 @@ function ShowForm() {
             image: imageUrl,
             soundFile : audioUrl 
         } )
-        history.push("/")
+        history.push("/shows")
       }
 
 

@@ -2,7 +2,7 @@ import axios from 'axios';
 let baseURL;
 
 process.env.NODE_ENV === 'production'
-  ? (baseURL = 'https://radio-transatlantica.herokuapp.com/')
+  ? (baseURL = 'https://radio-transatlantica.herokuapp.com')
   : (baseURL = 'http://localhost:3000');
 
 const service = axios.create({ withCredentials: true, baseURL });
@@ -24,8 +24,10 @@ export const signup = async user => {
     return await service.get("/profile")
   }
 
-  export const getAllProfiles = async () => {
-    return await service.get("/profile")
+  //============USERS===========
+
+  export const getAllUsers = async () => {
+    return await service.get('/users')
   }
 
   //========LOVE BUTTON =======
@@ -34,11 +36,11 @@ export const signup = async user => {
       return await service.put("/addlove", showsLoved)
   }
 
-  export const deleteShowLoved = async () => {
-    return await service.delete("/addlove")
+  export const deleteShowLoved = async showsLoved => {
+    return await service.put('/deletelove', showsLoved)
 }
 
-//=======SOCIAL=======
+//============SOCIAL===========
 
   export const facebookLogin = async () => {
     return await service.get("/auth/facebook")

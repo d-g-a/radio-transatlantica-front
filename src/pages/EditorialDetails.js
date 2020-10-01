@@ -89,6 +89,28 @@ font-size: 60px;
     align-content: center;
 }
 
+/* SUB-HEADLINE */
+.subtitle{
+    margin: 32px; 
+}
+/* SUB HEADLINE SIZE*/
+
+.SH-Small{
+font-size: 24px;
+}
+
+.SH-Medium {
+    font-size: 28px;
+}
+
+.SH-Large{
+    font-size: 32px;
+}
+
+.SH-Extra-Large{
+    font-size: 44px;
+}
+
 /* BODY IMAGE */
 
 .body-image-1{
@@ -105,14 +127,6 @@ font-size: 60px;
     margin-bottom: 80px;
 }
 
-
-.subtitle{
-    font-size: 40px;
-    margin: 32px 280px 16px;
-    text-align: left;
-    font-family:'gt_super_textbook_italic';
-    text-transform: lowercase;
-}
 
 .bodytext-div-1{
     width: 100vw;
@@ -210,8 +224,15 @@ function EditorialDetails({
 
                 </div>   
 
-                <div className={``}>
-                      <p className="subtitle">{editorial.subHeadline}</p>
+                <div className={`${editorial.subHeadlineAlignment}`}>
+
+                      <p className={`${editorial.subHeadlineSize}  
+                                    ${editorial.subHeadlineTypeface} 
+                                    ${editorial.subHeadlineWidth} 
+                                    subtitle`}
+                                    >
+                                    {editorial.subHeadline}                 
+                     </p>
                  </div>      
 
                 <div className="bodytext-div-1">

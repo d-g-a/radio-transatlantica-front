@@ -99,7 +99,7 @@ function EditorialForm() {
             subHeadlineSize: subHeadlineSizeInput.value,
             subHeadlineTypeface: subHeadlineTypefaceInput.value,
             subHeadlineWidth: subHeadlineWidthInput.value,
-            subHeadlineAlignment: subHeadlineAlignmentInput,
+            subHeadlineAlignment: subHeadlineAlignmentInput.value,
             bannerImage: bannerUrl,
             bodyImage1: bodyPic1Url,
             bodyImage2: bodyPic2Url,
@@ -246,14 +246,14 @@ function EditorialForm() {
             className="radio" 
             {...subHeadlineSizeInput}
             >
-                <input type="radio" id="Small" value="Small" name="subHeadlineSize"/>
-                <label htmlFor="Small">Small</label>
-                <input type="radio" id="Medium" value="Medium" name="subHeadlineSize"/>
-                <label htmlFor="Medium">Medium</label>
-                <input type="radio" id="Large" value="Large" name="subHeadlineSize"/>
-                <label htmlFor="Large">Large</label>
-                <input type="radio" id="Extra-Large" value="Extra-Large" name="subHeadlineSize"/>
-                <label htmlFor="Extra-Large">Extra-Large</label>
+                <input type="radio" id="SH-Small" value="SH-Small" name="subHeadlineSize"/>
+                <label htmlFor="SH-Small">Small</label>
+                <input type="radio" id="SH-Medium" value="SH-Medium" name="subHeadlineSize"/>
+                <label htmlFor="SH-Medium">Medium</label>
+                <input type="radio" id="SH-Large" value="SH-Large" name="subHeadlineSize"/>
+                <label htmlFor="SH-Large">Large</label>
+                <input type="radio" id="SH-Extra-Large" value="SH-Extra-Large" name="subHeadlineSize"/>
+                <label htmlFor="SH-Extra-Large">Extra-Large</label>
             </div>
             <br/>
             <h4>Sub-Headline Typeface</h4>

@@ -11,7 +11,8 @@ const ProfileStyled = styled.div`
 margin-top: 80px;
 background-color: black;
 color: white;
-height: 100vh;
+width: 100vw;
+height: 1920px;
 text-align: left;
 display: flex;
 justify-content: center;
@@ -28,10 +29,13 @@ h1{
     margin-bottom: 24px;
 }
 
+hr{
+    margin-bottom: 32px;
+}
+
 
 ul{
     list-style: none;
-
 }
 
 li{
@@ -119,6 +123,10 @@ width:120px;
 
 }
 
+.link{
+    text-transform: uppercase;
+}
+
 .info{
     display: flex;
     flex-direction: column;
@@ -143,13 +151,14 @@ function Profile({history}) {
         history.push("/")
     }
 
-    // async function submitDeleteButton(id) {
-    //     await deleteShowLoved({
-    //     })
-    //     console.log({
-    //         showsLoved: id.value
-    //     })   
-    //   }
+    async function submitDeleteButton(showId) {
+        await deleteShowLoved({
+            showsLoved: showId
+        })
+        console.log({
+            showsLoved: showId
+        })
+      }
 
     
     return user ? (
@@ -162,21 +171,22 @@ function Profile({history}) {
                 </div>
                 <div className="show-box">
                 <h1>Your favorite shows</h1>
+                <hr/>
         
             { user ? ( 
-                user.showsLoved.map(show => {console.log(show.guest)
+                user.showsLoved.map(show => {console.log(show?.guest)
                 return (
                 <div className="container">
                     <div className="info">
                         <div>
-                            <p className="show-title"><Link to={`/shows/${show._id}`}>{show.title}</Link></p>
-                            <p className="guest-name"><Link to={`/guests/${show.guest._id}`}>by{show.guest.name}</Link></p> 
+                            <p className="show-title"><Link to={`/shows/${show?._id}`}>{show?.title}</Link></p>
+                            <p className="guest-name">by <Link to={`/guests/${show?.guest?._id}`} className="link">{show?.guest?.name}</Link></p> 
                         </div>
             
                         <button 
                         className="remove-button"
-                        value={show.guest._id}
-                        // onClick={submitDeleteButton()}
+                        value={show?.guest?._id}
+                        onClick={() => submitDeleteButton(show?._id)}
                         id="showsLoved"
                         name="showsLoved"
                         // onChange={e => setRemove(e.target.value)}
@@ -185,7 +195,7 @@ function Profile({history}) {
                     </div>
                   
                      <div className="image-container">
-                         <img src={show.image} className="show-pic"/>
+                         <img src={show?.image} className="show-pic"/>
                      </div>
                     
 

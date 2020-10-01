@@ -33,9 +33,9 @@ padding: 24px;
 
   .genre-selector{
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: flex-start;
-      align-items: center;
+      align-items: flex-start;
       flex-wrap: wrap;
       margin: 4px;
 
@@ -213,13 +213,50 @@ function ShowForm() {
                         <label htmlFor="KRAUTROCK" className="checkbox-txt">KRAUTROCK</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="genre" id="PSYCHODELIC" value="PSYCHODELIC"/>
-                        <label htmlFor="PSYCHODELIC" className="checkbox-txt">PSYCHODELIC</label>
+                        <input type="checkbox" name="genre" id="PSYCHODELIC ROCK" value="PSYCHODELIC ROCK"/>
+                        <label htmlFor="PSYCHODELIC ROCK" className="checkbox-txt">PSYCHODELIC ROCK</label>
                     </div>
                     <div>
                         <input type="checkbox" name="genre" id="LATIN SOUL" value="LATIN SOUL"/>
                         <label htmlFor="LATIN SOUL" className="checkbox-txt">LATIN SOUL</label>
                     </div>
+                    <div>
+                        <input type="checkbox" name="genre" id="HEAVY METAL" value="HEAVY METAL"/>
+                        <label htmlFor="HEAVY METAL" className="checkbox-txt">HEAVY METAL</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genre" id="FREE JAZZ" value="FREE JAZZ"/>
+                        <label htmlFor="FREE JAZZ" className="checkbox-txt">FREE JAZZ</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genre" id="DISCO" value="DISCO"/>
+                        <label htmlFor="DISCO" className="checkbox-txt">DISCO</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genre" id="TECHNO" value="TECHNO"/>
+                        <label htmlFor="TECHNO" className="checkbox-txt">TECHNO</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genre" id="HOUSE" value="HOUSE"/>
+                        <label htmlFor="HOUSE" className="checkbox-txt">HOUSE</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genre" id="HIP HOP" value="HIP HOP"/>
+                        <label htmlFor="HIP HOP" className="checkbox-txt">HIP HOPL</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genre" id="BLUES" value="BLUES"/>
+                        <label htmlFor="BLUES" className="checkbox-txt">BLUES</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genre" id="SOUL" value="SOUL"/>
+                        <label htmlFor="SOUL" className="checkbox-txt">SOUL</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genre" id="PUNK" value="PUNK"/>
+                        <label htmlFor="PUNKSOUL" className="checkbox-txt">PUNK</label>
+                    </div>
+                    
                 </div>
                 <br/>
                 <button type='SUBMIT' className="send" disabled={!imageUrl || !audioUrl}>SUBMIT</button>

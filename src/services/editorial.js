@@ -19,10 +19,10 @@ export const createEditorial = async editorialInfo =>{
     await service.post('/editorial', editorialInfo)
 }
 
-export const updateEditorial = async xxx =>{
-    await service.put()
+export const updateEditorial = async ({editorialId, guestInfo})=>{
+    return await service.put(`/editorial/${editorialId}`)
 }
 
-export const deleteEditorial = async xxx =>{
-    await service.delete()
+export const deleteEditorial = async editorialId =>{
+    return await service.delete(`/editorial/${editorialId}`)
 }

@@ -92,6 +92,7 @@ function LogIn({history}) {
 
   
     async function loginProcess(values) {
+        
       const {
         data: { user }
       } = await login(values)
@@ -99,7 +100,8 @@ function LogIn({history}) {
       delete user.hash
       delete user.salt
       setContextUser(user)
-      history.push("/profile")
+     history.push("/profile")
+      
     }
 
     return !user ? (
@@ -130,7 +132,7 @@ function LogIn({history}) {
 
         <Form.Item>
           <Button type='primary' htmlType='submit' className="button">
-            Login
+            LOGIN
           </Button>
         </Form.Item>
       </Form>

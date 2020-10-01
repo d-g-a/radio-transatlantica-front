@@ -46,6 +46,6 @@ export const signup = async user => {
     return await service.get("/auth/facebook")
   }
   
-  export const GoogleLogin = async () => {
-    return await service.get("/auth/google")
-  }
+//   export const GoogleLogin = async () => {
+//     return await service.get("/auth/google")
+//   }

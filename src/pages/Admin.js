@@ -7,7 +7,9 @@ import MakeAdmin from '../components/MakeAdmin'
 import styled from 'styled-components'
 import {logOut} from '../services/index'
 import { Redirect } from 'react-router-dom'
-import {getShows} from '../services/show'
+import DeleteGuest from "../components/DeleteGuest"
+import DeleteEditorials from '../components/DeleteEditorials'
+import DeleteShows from "../components/DeleteShows"
 
 
 const AdminStyles = styled.div`
@@ -32,7 +34,7 @@ align-items: flex-start;
     justify-content: center;
     align-items: flex-start;
     padding: 0 20px;
-    margin: 120px 72px 0 320px;
+    margin: 120px 72px 0 160px;
 }
 
 .ButtonSet {
@@ -70,6 +72,9 @@ function Admin({history}) {
     const [newEditorial, setNewEditorial] = useState(false)
     const [newGuest, setNewGuest] = useState(false)
     const [newAdmin, setNewAdmin] = useState(false)
+    const [delShow, setDelShow] = useState(false)
+    const [delGuest, setDelGuest] = useState(false)
+    const [delEditorial, setDelEditorial] = useState(false)
 
     const {shows,setShows} = useState(null)
 
@@ -85,6 +90,9 @@ function Admin({history}) {
         setNewEditorial(false)
         setNewGuest(false)
         setNewAdmin(false)
+        setDelShow(false)
+        setDelGuest(false)
+        setDelEditorial(false)
     }
 
     function newEditorialForm(){
@@ -92,6 +100,9 @@ function Admin({history}) {
         setNewShow(false)
         setNewGuest(false)
         setNewAdmin(false)
+        setDelShow(false)
+        setDelGuest(false)
+        setDelEditorial(false)
     }
 
     function newGuestForm(){
@@ -99,10 +110,48 @@ function Admin({history}) {
         setNewEditorial(false)
         setNewShow(false)
         setNewAdmin(false)
+        setDelShow(false)
+        setDelGuest(false)
+        setDelEditorial(false)
     }
 
     function newAdminForm(){
         setNewAdmin(!newAdmin)
+        setNewGuest(false)
+        setNewEditorial(false)
+        setNewShow(false)
+        setDelShow(false)
+        setDelGuest(false)
+        setDelEditorial(false)
+    }
+
+    function deleteShow(){
+        setDelShow(!delShow)
+        setDelGuest(false)
+        setDelEditorial(false)
+        setNewShow(false)
+        setNewAdmin(false)
+        setNewGuest(false)
+        setNewEditorial(false)
+        setNewShow(false)
+
+    }
+
+    function deleteGuest(){
+        setDelShow(false)
+        setDelGuest(!delGuest)
+        setDelEditorial(false)
+        setNewAdmin(false)
+        setNewGuest(false)
+        setNewEditorial(false)
+        setNewShow(false)
+    }
+
+    function deleteEditorial(){
+        setDelShow(false)
+        setDelGuest(false)
+        setDelEditorial(!delEditorial)
+        setNewAdmin(false)
         setNewGuest(false)
         setNewEditorial(false)
         setNewShow(false)
@@ -131,7 +180,10 @@ function Admin({history}) {
                     {!newShow ? (<button onClick={newShowForm} >Add New Show</button>) : (<button onClick={newShowForm} >Cancel</button>)}
                     {!newGuest ? (<button onClick={newGuestForm} >Create New Guest</button>) : (<button onClick={newGuestForm} >Cancel</button>)}
                     {!newEditorial ? (<button onClick={newEditorialForm} >Add New Editorial</button>) : (<button onClick={newEditorialForm} >Cancel</button>)}
-                    {!newAdmin ? (<button onClick={newAdminForm}>Add New Admin</button>) : (<button onClick={newAdminForm} >Cancel</button>)}
+                    {/* {!newAdmin ? (<button onClick={newAdminForm}>Add New Admin</button>) : (<button onClick={newAdminForm} >Cancel</button>)} */}
+                    {!delShow? (<button onClick={deleteShow} >Delete Show</button>) : (<button onClick={deleteShow} >Cancel</button>)}
+                    {!delGuest?( <button onClick={ deleteGuest} >Delete Guest</button>): (<button onClick={ deleteGuest} >Cancel</button>)}
+                    {!delEditorial? (<button onClick={deleteEditorial} >Delete Editorial</button>) : (<button onClick={deleteEditorial} >Cancel</button>)}
                     <button onClick={logOutProcess}>LOG OUT</button>
                 </div>
             </div>
@@ -143,19 +195,15 @@ function Admin({history}) {
                 ( <EditorialForm/> )} 
                 {newGuest && 
                 ( <GuestForm/> )}
-                { newAdmin && 
-                (<MakeAdmin/>)}
+                {/* { newAdmin && 
+                (<MakeAdmin/>)} */}
+                { delGuest && 
+                (<DeleteGuest/>)}
+                { delEditorial && 
+                (<DeleteEditorials/>)}
+                 { delShow && 
+                (<DeleteShows/>)}
             </div>
-
-            {/* <div>
-                <p>All Shows</p>
-                {shows ? (shows.map( show => (
-                  <p>{show.title}</p>
-              ))
-              )
-              :(<p>Loading</p>)}
-
-            </div> */}
 
     
         </AdminStyles>

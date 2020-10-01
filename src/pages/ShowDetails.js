@@ -145,7 +145,6 @@ a:hover{
     background-color: white;
     width: 240px;
     padding:8px;
-    margin-bottom: 16px;
 }
 
 .unlove {
@@ -173,16 +172,9 @@ a:hover{
   }) {
     const [show, setShow] = useState(null)
     const [love,setLove] = useState(false)
-    // const[showsLoved,setShowsLoved] = useState("")
     const [play,setPlay] = useState(false)
 
     const { user } = useContext(MyContext)
-
-    // if(let i = 0; i <= user.showsLoved.length; i++){
-    //     setLove(true)
-        
-    // }
-
 
     async function submitButton() {
         await addShowLoved({
@@ -232,11 +224,11 @@ a:hover{
                 <div className="info-image-player">
                     <div className="full-container">   
                         <div className="container-info">
-                            <p className="show-title">{show.title}</p>
-                            <p><Link to={`/guests/${show.guest._id}`}>by {show.guest.name}</Link></p>
-                            <p className="show-location">streamed from {show.location}</p>
-                            <p className="show-date">{show.date}</p>
-                            <p className="show-genre">{show.genre}</p>
+                            <p className="show-title">{show?.title}</p>
+                            <p><Link to={`/guests/${show.guest._id}`}>by {show?.guest.name}</Link></p>
+                            <p className="show-location">streamed from {show?.location}</p>
+                            <p className="show-date">{show?.date}</p>
+                            <p className="show-genre">{show?.genre}</p>
                         </div>
 
                     <div className="play-love">

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import styled from "styled-components"
 import {getShows} from "../services/show"
-import ReactPlayer from "react-player"
 import {Link} from "react-router-dom"
 
 const ShowsStyled = styled.div`
@@ -148,11 +147,8 @@ function Shows() {
     async function fetchShows() {
         const {data: {shows}} = await getShows()
         setShows(shows)
-        console.log(shows)
     }
-
     
-
     useEffect(() => {
         fetchShows()
     }, [])
@@ -160,29 +156,27 @@ function Shows() {
 
     return (
         <ShowsStyled>
-            {/* <h1>RECENT SHOWS</h1>
-            <hr/> */}
             <div className="all-shows">
                 {shows ? (shows.map(show => (
                     
                     <div className="show-card-container">
                         <div className="show-card">
                             <div className="show-card-image">
-                                <img src={show.image} alt={show.title} className="show-image"/>
+                                <img src={show?.image} alt={show?.title} className="show-image"/>
                             </div>
                             <div className="show-card-info">
                                 <div className="info">
-                                <p className="show-title" >{show.title}</p>
-                                <p className="show-location">{show.location}</p>
-                                <p className="show-date">{show.date}</p>
-                                <p className="show-guest">by {show.guest.name}</p>
+                                <p className="show-title" >{show?.title}</p>
+                                <p className="show-location">{show?.location}</p>
+                                <p className="show-date">{show?.date}</p>
+                                <p className="show-guest">by {show?.guest?.name}</p>
                                 <ul className="show-genre">
-                                <li>{show.genre}</li>
+                                <li>{show?.genre}</li>
                                 </ul>
                                 </div>
                             
                                 <div className="button">
-                                    <button className="listen-button" ><Link to={`/shows/${show._id}`}>LISTEN</Link></button>  
+                                    <button className="listen-button" ><Link to={`/shows/${show?._id}`}>LISTEN</Link></button>  
                                 </div>  
                             </div>
                         </div>
@@ -194,82 +188,7 @@ function Shows() {
             </div>
          
 
-            {/* <div className="show-card-container">
-            <div className="show-card">
-                <div className="show-card-image">
-                     <img src="https://res.cloudinary.com/dieglitter/image/upload/v1601251294/radio-shows/RT-5_lwublx.jpg" alt="" className="show-image"/>
-                </div>
-                <div className="show-card-info">
-                    <div className="info">
-                    <p className="show-title">MIXTAPE #56</p>
-                    <p className="show-location">MEX</p>
-                    <p className="show-date">22.01.91</p>
-                    <p className="show-guest">by DAPHNI</p>
-                    <ul className="show-genre">
-                       <li>KRAUTROCK</li>
-                       <li>PSYCH</li>
-                    </ul>
-                    </div>
-                  
-                    <div className="player">
-                        <img src="https://res.cloudinary.com/dieglitter/image/upload/v1601261950/radio-shows/PLAY-WHITE_zxnwlq.svg" alt="" className="play-button"/>
-                    </div>
-                </div>
-               
-            </div>
 
-            <div className="show-card">
-                <div className="show-card-image">
-                     <img src="https://res.cloudinary.com/dieglitter/image/upload/v1601251271/radio-shows/RT-8_hlavpu.jpg" alt="" className="show-image"/>
-                </div>
-                <div className="show-card-info">
-                    <div className="info">
-                    <p className="show-title">MIXTAPE #56</p>
-                    <p className="show-location">MEX</p>
-                    <p className="show-date">22.01.91</p>
-                    <p className="show-guest">by DAPHNI</p>
-                    <ul className="show-genre">
-                       <li>KRAUTROCK</li>
-                       <li>PSYCH</li>
-                    </ul>
-                    </div>
-                  
-                    <div className="player">
-                        <img src="https://res.cloudinary.com/dieglitter/image/upload/v1601261950/radio-shows/PLAY-WHITE_zxnwlq.svg" alt="" className="play-button"/>
-                    </div>
-                </div>
-               
-            </div>
-
-            <div className="show-card">
-                <div className="show-card-image">
-                     <img src="https://res.cloudinary.com/dieglitter/image/upload/v1601251294/radio-shows/RT-22_mgwlkb.jpg" alt="" className="show-image"/>
-                </div>
-                <div className="show-card-info">
-                    <div className="info">
-                    <p className="show-title">MIXTAPE #56</p>
-                    <p className="show-location">MEX</p>
-                    <p className="show-date">22.01.91</p>
-                    <p className="show-guest">by DAPHNI</p>
-                    <ul className="show-genre">
-                       <li>KRAUTROCK</li>
-                       <li>PSYCH</li>
-                    </ul>
-                    </div>
-                  
-                    <div className="player">
-                        <img src="https://res.cloudinary.com/dieglitter/image/upload/v1601261950/radio-shows/PLAY-WHITE_zxnwlq.svg" alt="" className="play-button"/>
-                    </div>
-                </div>
-               
-            </div>
-
-            </div> */}
-
-            
-
-
-            
         </ShowsStyled>
     )
 }

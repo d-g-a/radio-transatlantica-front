@@ -9,16 +9,16 @@ canvas{
     }
 `
 
-
 const Canvas = props => {
     
     const [aimX,setAimX] = useState(0)
     const [aimY,setAimY] = useState(0)
-  
-  const canvasRef = useRef(null)
+   
+    const canvasRef = useRef(null)
 
-  const image = document.createElement("img")
-  image.src = "https://res.cloudinary.com/dieglitter/image/upload/v1601251294/radio-shows/RT-1_ripjfp.jpg"
+
+    const image = document.createElement("img")
+    image.src = "https://res.cloudinary.com/dieglitter/image/upload/v1601151919/radio-shows/rt-logo_white_onfwed.svg"
   
   useEffect(() => {
     const canvas = canvasRef.current
@@ -30,28 +30,25 @@ const Canvas = props => {
 
     const context = canvas.getContext("2d")
     context.scale(2,2)
-
-    //Our first draw
-    //context.fillStyle = '#BADA55'
-    //context.fillRect(0, 0, context.canvas.width, context.canvas.height)
   }, [])
 
   window.addEventListener("mousemove", event => {
 
     setAimX(event.pageX)
     setAimY(event.pageY)
-})
+
+},[])
 
 
-//   useEffect(()=>{
-//     const canvas = canvasRef.current  
-//     const context = canvas.getContext("2d")
+  useEffect(()=>{
+    const canvas = canvasRef.current  
+    const context = canvas.getContext("2d")
 
-//     image.onload = function(){
-//         context.drawImage(image, aimX, aimY, 250, 250)
-//     }
+    image.onload = function(){
+        context.drawImage(image, aimX, aimY, 90, 25)
+    }
 
-//   },[aimX,aimY])
+  },[aimX,aimY])
   
   return (
       <CanvasStyled>

@@ -30,7 +30,8 @@ align-items: flex-start;
 }
 
 .text-container{
-    width: 50%inherit;
+    width: 65%;
+    margin-right: 16px;
 
 }
 

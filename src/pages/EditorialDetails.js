@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext} from 'react'
 import styled from "styled-components"
 import Footer from "../components/Footer"
 import {getOneEditorial} from "../services//editorial"
+import { useTranslation } from "react-i18next"
 
 
 const EditorialDetailsStyled = styled.div`
@@ -186,6 +187,8 @@ function EditorialDetails({
 
     const [editorial , setEditorial] = useState(null)
 
+    const { t } = useTranslation()
+
     useEffect(()=>{
         async function fetchEditorial() {
             const {data : { oneEditorial }} = await getOneEditorial(editorialId)
@@ -257,8 +260,8 @@ function EditorialDetails({
 
                 <div className="credits">
                     
-                    <p>category: {editorial.articleCategory}</p>
-                    <p>writer: {editorial.writer}</p>
+                    <p>{t("category")} {editorial.articleCategory}</p>
+                    <p>{t("writer")} {editorial.writer}</p>
                     <p>{editorial.writerBio}</p>
                     <a href={`https://www.instagram.com/${editorial.instagram}`}>
                         <img 
@@ -266,8 +269,8 @@ function EditorialDetails({
                         alt="instagram" 
                         className="instagram"/>
                     </a>
-                    <p>Photographs by: {editorial.photographer}</p>  
-                    <p>Published: {editorial.date}</p>
+                    <p>{t("photographs")} {editorial.photographer}</p>  
+                    <p>{t("published")} {editorial.date}</p>
 
                 </div>
                 </>

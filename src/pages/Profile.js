@@ -4,6 +4,7 @@ import styled from "styled-components"
 import {logOut} from '../services/index'
 import {Link, Redirect} from "react-router-dom"
 import {deleteShowLoved} from "../services/index"
+import { useTranslation } from "react-i18next"
 
 
 const ProfileStyled = styled.div`
@@ -69,6 +70,7 @@ a:hover{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    text-transform: uppercase;
 }
 
 
@@ -110,6 +112,7 @@ width:120px;
     border-radius: 1px solid white;
     padding: 8px;   
     width:120px; 
+    text-transform: uppercase;
 }
 
 .remove-button{
@@ -120,6 +123,7 @@ width:120px;
     height: 20px;  
     width:104px; 
     font-size:10px;
+    text-transform: uppercase;
 
 }
 
@@ -136,6 +140,8 @@ width:120px;
 `
 
 function Profile({history}) {
+
+    const { t } = useTranslation()
 
    
 
@@ -165,12 +171,12 @@ function Profile({history}) {
         <ProfileStyled> 
             {<div className="profile-container">
                 <div className="buttons">
-                    <button className="logout" onClick={logOutProcess}>LOGOUT</button> 
+                    <button className="logout" onClick={logOutProcess}>{t("logout")}</button> 
                     {user.role === "ADMIN" && (<button className="admin-button"><Link to="/admin">ADMIN PANEL</Link></button> )}  
                    
                 </div>
                 <div className="show-box">
-                <h1>Your favorite shows</h1>
+                <h1>{t("fav-shows")}</h1>
                 <hr/>
         
             { user ? ( 
@@ -180,7 +186,7 @@ function Profile({history}) {
                     <div className="info">
                         <div>
                             <p className="show-title"><Link to={`/shows/${show?._id}`}>{show?.title}</Link></p>
-                            <p className="guest-name">by <Link to={`/guests/${show?.guest?._id}`} className="link">{show?.guest?.name}</Link></p> 
+                            <p className="guest-name">{t("by")} <Link to={`/guests/${show?.guest?._id}`} className="link">{show?.guest?.name}</Link></p> 
                         </div>
             
                         <button 
@@ -191,7 +197,7 @@ function Profile({history}) {
                         name="showsLoved"
                         // onChange={e => setRemove(e.target.value)}
                         // type="submit"
-                        >REMOVE</button>   
+                        >{t("remove")}</button>   
                     </div>
                   
                      <div className="image-container">

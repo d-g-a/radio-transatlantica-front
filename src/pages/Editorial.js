@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import styled from "styled-components"
 import { getAllEditorials } from "../services/editorial"
 import {Link} from 'react-router-dom' 
+import { useTranslation } from "react-i18next"
 
 const EditorialStyled = styled.div`
 display:flex;
@@ -84,6 +85,7 @@ padding-top: 88px;
 function Editorial() {
 
     const [editorials, setEditorials] = useState(null)
+    const { t } = useTranslation()
 
     async function fetchEditorials() {
         const {data: {allEditorials}} = await getAllEditorials()
@@ -109,7 +111,7 @@ function Editorial() {
                         </div>
                        
                         <div className="button-container">
-                            <button className="button"><Link to={`/editorial/${editorial._id}`}>Read Article</Link></button>
+                            <button className="button"><Link to={`/editorial/${editorial._id}`}>{t("article")}</Link></button>
                         </div>
                         
                     </div>
@@ -121,7 +123,7 @@ function Editorial() {
                     
                 ))
                 ) : (
-               <p className="loader">Loading...</p>
+               <p className="loader">{t("loading")}</p>
                 ) }
              </div>
 

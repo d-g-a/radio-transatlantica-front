@@ -5,6 +5,7 @@ import useInput from '../hooks/useInput'
 import axios from 'axios'
 import { createShow } from '../services/show'
 import {getAllGuests} from '../services/guest'
+import { useTranslation } from "react-i18next"
 
 
 const ShowFormStyled = styled.form`
@@ -58,6 +59,8 @@ function ShowForm() {
     const dateInput = useInput("")
     const locationInput = useInput("")
     const genreInput = useInput("")
+
+    const { t } = useTranslation()
 
 
     async function submitForm(e) {
@@ -130,9 +133,9 @@ function ShowForm() {
 
     return (
         <ShowFormStyled  onSubmit={submitForm}>
-            <h2>New Show!</h2>
+            <h2>{t("new-show-title")}</h2>
             <br/>
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">{t("title")}</label>
                 <input 
                 type="text" 
                 name="title" 
@@ -141,23 +144,16 @@ function ShowForm() {
                 {...titleInput} 
                 />
                  <br/>
-                 <label htmlFor="guest">Guest's Name</label>
+                 <label htmlFor="guest">{t("guest-name")}</label>
                  <select name="guest" id="guest" {...guestInput}>
                  {guests ? (guests.map(guest => (
                     <option value={guest._id} >{guest.name}</option>
               
-                ))) : (<option>Loading</option>)}
+                ))) : (<option>{t("loading")}</option>)}
                 </select>
-            
-                {/* <input 
-                type="text" 
-                name="guest"
-                id="guest"
-                placeholder="name of guest"
-                {...guestInput}
-                /> */}
+    
                 <br/>
-                <label htmlFor="image">Image</label>
+                <label htmlFor="image">{t("image")}</label>
                 <input 
                 type="file" 
                 name="image"
@@ -166,7 +162,7 @@ function ShowForm() {
                 //{...imageInput}
                 />
                 <br/>
-                <label htmlFor="soundFile">Audio file:</label>
+                <label htmlFor="soundFile">{t("audio-file")}</label>
                 <input 
                 type="file"
                 name="soundFile"
@@ -175,7 +171,7 @@ function ShowForm() {
                 // {...soundFileInput}
                 />
                 <br/>
-                <label htmlFor="date">When was the show streamed?</label>
+                <label htmlFor="date">{t("when")}</label>
                 <input 
                 type="text"
                 name="date"
@@ -184,7 +180,7 @@ function ShowForm() {
                 {...dateInput}
                 />
                 <br/>
-                <label htmlFor="location">Where was the show streamed from?</label>
+                <label htmlFor="location">{t("where")}</label>
                 <div {...locationInput}>
                     <input type="radio" value="MEX" id="MEX"name="location"/>
                     <label htmlFor="MEX">MEX</label>
@@ -192,7 +188,7 @@ function ShowForm() {
                     <label htmlFor="BCN">BCN</label>
                 </div>
                 <br/>
-                <label htmlFor="genre">Choose 1 genre that best fit the show's style</label>
+                <label htmlFor="genre">{t("genre")}</label>
             
 
                 <div {...genreInput} className="genre-selector">
@@ -259,7 +255,7 @@ function ShowForm() {
                     
                 </div>
                 <br/>
-                <button type='SUBMIT' className="send" disabled={!imageUrl || !audioUrl}>SUBMIT</button>
+                <button type='SUBMIT' className="send" disabled={!imageUrl || !audioUrl}>{t("submit")}</button>
             
         </ShowFormStyled>
     )

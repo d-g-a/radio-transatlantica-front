@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from "styled-components"
 import {getOneGuest} from "../services/guest"
 import {Link} from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 const GuestPageStyled = styled.div`
 
@@ -132,6 +133,8 @@ function GuestPage({
   }) {
 
     const [guest,setGuest] = useState(null)
+
+    const { t } = useTranslation()
     
     useEffect(()=>{
         async function fetchGuest() {
@@ -160,7 +163,7 @@ function GuestPage({
                     
 
                     <div className="shows-container">
-                        <p className="last-shows">Last Shows</p>
+                        <p className="last-shows">{t("last-shows")}</p>
                         {guest.shows.map(show => (
                             <div className="show-container">
                                 <div className="title-date">

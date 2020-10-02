@@ -2,6 +2,7 @@ import React,{useState , useEffect} from 'react'
 import styled from "styled-components"
 import {getAllGuests} from '../services/guest'
 import {Link} from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 
 
@@ -52,15 +53,14 @@ li{
 
 
 
-
-
-
-
 `
 
 function Explore() {
     const [guests,setGuests] = useState(null)
     const [isShown, setIsShown] = useState(false);
+
+    const { t, i18n } = useTranslation()
+  
  
 
     async function fetchGuests(){
@@ -78,7 +78,7 @@ function Explore() {
 
     return (
         <ExploreStyled>
-              <p>Guests</p>
+              <p>{t("guests")}</p>
                 {guests ? (guests.map(guest => (
                     <div className="guest-container">
                     
@@ -94,17 +94,11 @@ function Explore() {
 
                         <div className="image-container">
 
-                        {/* {isShown && (
-                            <div>
-                              <img key={guest._id} src={guest.image} alt="" className="guest-image"/>
-                            </div>
-                        )} */}
-
                         </div>
 
                     </div>
                     
-                ))) : (<p>Loading</p>)} 
+                ))) : (<p>{t("loading")}</p>)} 
                 
         </ExploreStyled>
     )

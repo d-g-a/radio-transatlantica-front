@@ -4,6 +4,7 @@ import useInput from '../hooks/useInput'
 import axios from 'axios'
 import { createEditorial } from '../services/editorial'
 import {useHistory} from 'react-router-dom'
+import { useTranslation } from "react-i18next"
 
 const EditorialFormStyled = styled.form`
 background-color: white;
@@ -61,6 +62,8 @@ padding: 24px;
 `
 
 function EditorialForm() {
+
+    const { t } = useTranslation()
 
     const history = useHistory()
 
@@ -155,9 +158,9 @@ function EditorialForm() {
 
     return (
         <EditorialFormStyled  onSubmit={submitForm}>
-            <h2>New story to Radio Transatlántica</h2>
+            <h2>{t("new-editorial-title")}</h2>
             <br/>
-            <h4>Article Category</h4>
+            <h4>{t("article-category")}</h4>
             <div 
             className="radio" 
             {...articleCategoryInput}
@@ -170,7 +173,7 @@ function EditorialForm() {
                 <label htmlFor="Music">Music</label>
             </div>
             <br/>
-            <h4 htmlFor="headline">Headline</h4>
+            <h4 htmlFor="headline">{t("headline")}</h4>
             <input 
             type="text" 
             id="headline" 
@@ -180,7 +183,7 @@ function EditorialForm() {
             {...headlineInput}
             />    
             <br/>
-            <h4>Headline Size</h4>
+            <h4>{t("headline-size")}</h4>
             <div 
             className="radio" 
             {...headlineSizeInput}
@@ -195,7 +198,7 @@ function EditorialForm() {
                 <label htmlFor="Extra-Large">Extra-Large</label>
             </div>
             <br/>
-            <h4>Headline Typeface</h4>
+            <h4>{t("headline-typeface")}</h4>
             <div 
             className="radio"
             {...headlineTypefaceInput}
@@ -206,7 +209,7 @@ function EditorialForm() {
                 <label htmlFor="Sans-Serif">Sans-Serif</label>
             </div>
             <br/>
-            <h4>Headline Width</h4>
+            <h4>{t("headline-width")}</h4>
             <div 
             className="radio"
             {...headlineWidthInput}
@@ -219,7 +222,7 @@ function EditorialForm() {
                 <label htmlFor="hundred">100%</label>
             </div>
             <br/>
-            <h4>Headline Alignment</h4>
+            <h4>{t("headline-alignment")}</h4>
             <div 
             className="radio"
             {...headlineAlignmentInput}
@@ -231,7 +234,7 @@ function EditorialForm() {
             </div>
            
             <br/>
-            <h4>Sub-Headline</h4>
+            <h4>{t("sub-headline")}</h4>
             <input 
             type="text" 
             id="Sub-Headline" 
@@ -241,7 +244,7 @@ function EditorialForm() {
             {...subHeadlineInput}
             />
             <br/>
-            <h4>Sub-Headline Size</h4>
+            <h4>{t("sub-headline-size")}</h4>
             <div 
             className="radio" 
             {...subHeadlineSizeInput}
@@ -256,7 +259,7 @@ function EditorialForm() {
                 <label htmlFor="SH-Extra-Large">Extra-Large</label>
             </div>
             <br/>
-            <h4>Sub-Headline Typeface</h4>
+            <h4>{t("sub-headline-typeface")}</h4>
             <div 
             className="radio"
             {...subHeadlineTypefaceInput}
@@ -267,7 +270,7 @@ function EditorialForm() {
                 <label htmlFor="Sans-Serif">Sans-Serif</label>
             </div>
             <br/>
-            <h4>Sub-Headline Width</h4>
+            <h4>{t("sub-headline-typeface")}</h4>
             <div 
             className="radio"
             {...subHeadlineWidthInput}
@@ -280,7 +283,7 @@ function EditorialForm() {
                 <label htmlFor="hundred">100%</label>
             </div>
             <br/>
-            <h4>Sub-Headline Alignment</h4>
+            <h4>{t("sub-headline-typeface")}</h4>
             <div 
             className="radio"
             {...subHeadlineAlignmentInput}
@@ -291,7 +294,7 @@ function EditorialForm() {
                 <label htmlFor="Center">Center</label>
             </div>
             <br/>
-            <h4>Body-Text</h4>
+            <h4>{t("body-text")}</h4>
             <textarea 
             name="bodyText" 
             id="bodyText" 
@@ -300,7 +303,7 @@ function EditorialForm() {
             {...bodyTextInput}
             />
             <br/>
-            <h4>Banner Image</h4>
+            <h4>{t("body-text")}</h4>
             <input 
             type="file" 
             name="bannerImage"
@@ -308,21 +311,21 @@ function EditorialForm() {
             />
             <br/>
 
-            <h4>Body Image 1</h4>
+            <h4>{t("body-image-1")}</h4>
             <input 
             type="file" 
             name="bodyImage1"
             onChange={uploadBodyPic1}
             />
             <br/>
-            <h4>Body Image 2</h4>
+            <h4>{t("body-image-2")}</h4>
             <input 
             type="file" 
             name="bodyImage2"
             onChange={uploadBodyPic2}
             />
             <br/>
-            <h4>Writer's Name</h4>
+            <h4>{t("writer-name")}</h4>
             <input 
             type="text" 
             placeholder="Writer" 
@@ -331,7 +334,7 @@ function EditorialForm() {
             {...writerNameInput}
             />
             <br/>
-            <h4>Writer's Bio</h4>
+            <h4>{t("writer-bio")}</h4>
             <textarea 
             name="writerBio" 
             id="" 
@@ -342,7 +345,7 @@ function EditorialForm() {
             {...writerBioInput}
             />
             <br/>
-            <h4>Writer's Instagram Handle without @ </h4>
+            <h4>{t("writer-instagram")}</h4>
             <input 
             type="text" 
             name="instagram" 
@@ -352,7 +355,7 @@ function EditorialForm() {
             {...writerInstagramInput}
             />
             <br/>
-            <h4>Photos by</h4>
+            <h4>{t("photographer-name")}</h4>
             <input 
             type="text" 
             name="photographer" 
@@ -362,7 +365,7 @@ function EditorialForm() {
             {...photographerNameInput}
             />
             <br/>
-            <h4>Publish Date</h4>
+            <h4>{t("publish-date")}</h4>
             <input 
             type="text" 
             name="date" 
@@ -372,7 +375,7 @@ function EditorialForm() {
             {...dateInput}
             />
             <br/>
-            <button type="submit" className="send" disabled={!bannerUrl || !bodyPic1Url || !bodyPic2Url}>SUBMIT</button>
+            <button type="submit" className="send" disabled={!bannerUrl || !bodyPic1Url || !bodyPic2Url}>{t("submit")}</button>
 
 
         </EditorialFormStyled>

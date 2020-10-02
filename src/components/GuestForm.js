@@ -4,6 +4,7 @@ import useInput from '../hooks/useInput'
 import axios from 'axios'
 import { createGuest } from '../services/guest'
 import {useHistory} from 'react-router-dom'
+import { useTranslation } from "react-i18next"
 
 const GuestFormStyled = styled.form`
 background-color: white;
@@ -41,6 +42,8 @@ function GuestForm() {
 
     const history = useHistory()
 
+    const { t } = useTranslation()
+
     const nameInput = useInput("")
     const bioInput = useInput("")
 
@@ -74,9 +77,9 @@ function GuestForm() {
     
     return (
         <GuestFormStyled onSubmit={submitForm}>
-            <h2>New Guest in Radio Transatlántica</h2>
+            <h2>{t("new-guest-title")}</h2>
             <br/>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">{t("name")}</label>
             <input 
             type="text" 
             id="name" 
@@ -85,7 +88,7 @@ function GuestForm() {
             {...nameInput}
             />
             <br/>
-            <label htmlFor="image">Image</label>
+            <label htmlFor="image">{t("image-guest")}</label>
             <input 
             type="file" 
             id="image" 
@@ -93,7 +96,7 @@ function GuestForm() {
             onChange={uploadPhoto}
             />
             <br/>
-            <label htmlFor="bio">Add a short bio</label>
+            <label htmlFor="bio">{t("bio")}</label>
             <textarea 
             type="text" 
             id="bio" 
@@ -102,7 +105,7 @@ function GuestForm() {
             {...bioInput}
             />
             <br/>
-            <button type= "submit" className="send" disabled={!imageUrl} >SUBMIT</button>
+            <button type= "submit" className="send" disabled={!imageUrl} >{t("submit")}</button>
         </GuestFormStyled>
     )
 }

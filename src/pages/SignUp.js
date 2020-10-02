@@ -4,6 +4,7 @@ import styled from "styled-components"
 import {Link, Redirect} from 'react-router-dom'
 import { Form, Input, Button} from 'antd';
 import { signup } from "../services/index"
+import { useTranslation } from "react-i18next"
 
 let baseURL;
 
@@ -37,6 +38,7 @@ align-items: center;
 
 h1{
     margin-bottom: 24px;
+    text-transform: uppercase;
 }
 
 .email, .password, .button {
@@ -49,6 +51,7 @@ h1{
     border: 1px solid white;
     background-color: black;
     color: white;
+    text-transform: uppercase;
 }
 
 a {
@@ -81,6 +84,8 @@ function SignUp( {history} ) {
     const [form] = Form.useForm()
     const {user} = useContext(MyContext)
 
+    const { t } = useTranslation()
+
     async function signUpProcess(values){
         await signup(values)
         history.push('/login')
@@ -89,7 +94,7 @@ function SignUp( {history} ) {
 
     return !user ? ( <SignUpStyled>
         <div className="signup-container">
-        <h1>SIGN UP</h1>
+        <h1>{t("signup")}</h1>
 
         <Form layout='vertical' name='basic' form={form} onFinish={signUpProcess}>
             <Form.Item
@@ -112,7 +117,7 @@ function SignUp( {history} ) {
 
             <Form.Item>
             <Button type='primary' htmlType='submit' className="button">
-                SUBMIT
+                {t("submit")}
             </Button>
             </Form.Item>
          </Form>
@@ -120,7 +125,7 @@ function SignUp( {history} ) {
             <a href={`${baseURL}/auth/facebook`}>Facebook</a>
          </button>
 
-         <p>If you already have an account <Link to="/login">log in here!</Link></p>
+         <p>{t("account")} <Link to="/login">{t("login-here")}</Link></p>
 
          <Link to="/"><img src="https://res.cloudinary.com/dieglitter/image/upload/v1601151919/radio-shows/rt-logo_white_onfwed.svg" alt="logo-rt" className="rt-logo"/></Link> 
 

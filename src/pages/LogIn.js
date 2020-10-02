@@ -4,6 +4,7 @@ import {Link, Redirect} from "react-router-dom"
 import { Form, Input, Button } from "antd"
 import { login } from "../services"
 import { MyContext } from "../context"
+import { useTranslation } from "react-i18next"
 
 
 let baseURL;
@@ -38,6 +39,7 @@ align-items: center;
 
 h1{
     margin-bottom: 24px;
+    text-transform: uppercase;
 }
 
 
@@ -55,6 +57,7 @@ p{
     border: 1px solid white;
     background-color: black;
     color: white;
+    text-transform: uppercase;
 }
 
 .email, .password, .button {
@@ -90,6 +93,8 @@ function LogIn({history}) {
     const [form] = Form.useForm()
     const { setContextUser, user } = useContext(MyContext)
 
+    const { t } = useTranslation()
+
   
     async function loginProcess(values) {
         
@@ -109,7 +114,7 @@ function LogIn({history}) {
 
             <div className="login-container">
 
-            <h1>LOG IN</h1>
+            <h1>{t("login")}</h1>
 
             <Form layout='vertical' name='basic' form={form} onFinish={loginProcess}>
         <Form.Item
@@ -132,7 +137,7 @@ function LogIn({history}) {
 
         <Form.Item>
           <Button type='primary' htmlType='submit' className="button">
-            LOGIN
+            {t("login")}
           </Button>
         </Form.Item>
       </Form>
@@ -143,7 +148,7 @@ function LogIn({history}) {
         </button>
 
 
-              <p>If you don't have an account <Link to="/signup">sign up here!</Link></p>  
+              <p>{t("no-account")} <Link to="/signup">{t("create")}</Link></p>  
 
               <Link to="/"><img src="https://res.cloudinary.com/dieglitter/image/upload/v1601151919/radio-shows/rt-logo_white_onfwed.svg" alt="logo-rt" className="rt-logo"/></Link> 
 

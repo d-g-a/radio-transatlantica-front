@@ -4,6 +4,7 @@ import useInput from '../hooks/useInput'
 import {useHistory} from 'react-router-dom'
 import {getAllGuests} from '../services/guest'
 import { deleteGuest } from '../services/guest'
+import { useTranslation } from "react-i18next"
 
 const DeleteGuestStyled = styled.form`
 background-color: white;
@@ -30,6 +31,9 @@ padding: 24px;
 `
 
 function DeleteGuest() {
+
+    const { t } = useTranslation()
+
     const history = useHistory()
 
     const guestInput = useInput("")
@@ -60,17 +64,17 @@ function DeleteGuest() {
     return (
         <DeleteGuestStyled onSubmit={submitForm}>
            
-          <h1>Delete Guests</h1>
+          <h1>{t("delete-guest")}</h1>
             <br/>
-                <label htmlFor="guest" className="guest">Guest's Name</label>
+                <label htmlFor="guest" className="guest">{t("guest-name")}</label>
                 <br/>
                     <select name="guest" id="guest" {...guestInput}>
                     {guests ? (guests.map(guest => (
                         <option value={guest._id} >{guest.name}</option>
-                    ))) : (<option>Loading</option>)}
+                    ))) : (<option>{t("loading")}</option>)}
                     </select>
                     <br/>
-                    <button type='SUBMIT' className="send" >DELETE</button>
+                    <button type='SUBMIT' className="send" >{t("delete")}</button>
             
             
         </DeleteGuestStyled>

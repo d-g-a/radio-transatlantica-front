@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import styled from "styled-components"
 import {getShows} from "../services/show"
 import {Link} from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 const ShowsStyled = styled.div`
 
@@ -101,6 +102,7 @@ margin: 16px;
 
 .show-guest{
     margin-bottom: 8px;
+    text-transform: uppercase;
 }
 
 .listen-button{
@@ -109,6 +111,7 @@ margin: 16px;
     width: 100%;
     height:100%;
     padding: 4px;
+    text-transform: uppercase;
 }
 
 a {
@@ -142,6 +145,8 @@ li{
 function Shows() {
 
     const [shows,setShows] = useState(null)
+
+    const { t, i18n } = useTranslation()
  
 
     async function fetchShows() {
@@ -169,14 +174,14 @@ function Shows() {
                                 <p className="show-title" >{show?.title}</p>
                                 <p className="show-location">{show?.location}</p>
                                 <p className="show-date">{show?.date}</p>
-                                <p className="show-guest">by {show?.guest?.name}</p>
+                                <p className="show-guest">{show?.guest?.name}</p>
                                 <ul className="show-genre">
                                 <li>{show?.genre}</li>
                                 </ul>
                                 </div>
                             
                                 <div className="button">
-                                    <button className="listen-button" ><Link to={`/shows/${show?._id}`}>LISTEN</Link></button>  
+                                <button className="listen-button" ><Link to={`/shows/${show?._id}`}>{t("listen")}</Link></button>  
                                 </div>  
                             </div>
                         </div>
@@ -184,7 +189,7 @@ function Shows() {
                     </div>
 
                 ))
-                ) : (<p className="loader">Loading...</p>)}     
+                ) : (<p className="loader">{t("loading")}</p>)}     
             </div>
          
 

@@ -10,6 +10,7 @@ import { Redirect } from 'react-router-dom'
 import DeleteGuest from "../components/DeleteGuest"
 import DeleteEditorials from '../components/DeleteEditorials'
 import DeleteShows from "../components/DeleteShows"
+import { useTranslation } from "react-i18next"
 
 
 const AdminStyles = styled.div`
@@ -51,6 +52,7 @@ button{
     width:240px;
     height:40px;
     margin: 8px 16px;
+    text-transform: uppercase;
 }
 
 .FormSet{
@@ -67,6 +69,8 @@ align-items: flex-end;
 function Admin({history}) {
 
     const {user, clearContextUser} = useContext(MyContext)
+
+    const { t } = useTranslation()
 
     const [newShow, setNewShow] = useState(false)
     const [newEditorial, setNewEditorial] = useState(false)
@@ -177,14 +181,14 @@ function Admin({history}) {
                 <img src="https://res.cloudinary.com/dieglitter/image/upload/v1601151897/radio-shows/rt-logo_cbvyz7.svg" alt="rt-logo" className="logo"/>
 
                 <div className="ButtonSet">
-                    {!newShow ? (<button onClick={newShowForm} >Add New Show</button>) : (<button onClick={newShowForm} >Cancel</button>)}
-                    {!newGuest ? (<button onClick={newGuestForm} >Create New Guest</button>) : (<button onClick={newGuestForm} >Cancel</button>)}
-                    {!newEditorial ? (<button onClick={newEditorialForm} >Add New Editorial</button>) : (<button onClick={newEditorialForm} >Cancel</button>)}
+                    {!newShow ? (<button onClick={newShowForm} >{t("new-show")}</button>) : (<button onClick={newShowForm} >{t("cancel")}</button>)}
+                    {!newGuest ? (<button onClick={newGuestForm} >{t("new-guest")}</button>) : (<button onClick={newGuestForm} >{t("cancel")}</button>)}
+                    {!newEditorial ? (<button onClick={newEditorialForm} >{t("new-editorial")}</button>) : (<button onClick={newEditorialForm} >{t("cancel")}</button>)}
                     {/* {!newAdmin ? (<button onClick={newAdminForm}>Add New Admin</button>) : (<button onClick={newAdminForm} >Cancel</button>)} */}
-                    {!delShow? (<button onClick={deleteShow} >Delete Show</button>) : (<button onClick={deleteShow} >Cancel</button>)}
-                    {!delGuest?( <button onClick={ deleteGuest} >Delete Guest</button>): (<button onClick={ deleteGuest} >Cancel</button>)}
-                    {!delEditorial? (<button onClick={deleteEditorial} >Delete Editorial</button>) : (<button onClick={deleteEditorial} >Cancel</button>)}
-                    <button onClick={logOutProcess}>LOG OUT</button>
+                    {!delShow? (<button onClick={deleteShow} >{t("delete-show")}</button>) : (<button onClick={deleteShow} >{t("cancel")}</button>)}
+                    {!delGuest?( <button onClick={ deleteGuest} >{t("delete-guest")}</button>): (<button onClick={ deleteGuest} >{t("cancel")}</button>)}
+                    {!delEditorial? (<button onClick={deleteEditorial} >{t("delete-editorial")}</button>) : (<button onClick={deleteEditorial} >{t("cancel")}</button>)}
+                    <button onClick={logOutProcess}>{t("logout")}</button>
                 </div>
             </div>
 

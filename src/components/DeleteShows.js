@@ -3,6 +3,7 @@ import styled from "styled-components"
 import {useHistory} from 'react-router-dom'
 import {getShows, deleteShow} from "../services/show"
 import useInput from '../hooks/useInput'
+import { useTranslation } from "react-i18next"
 
 const DeleteShowStyled = styled.form`
 background-color: white;
@@ -30,6 +31,8 @@ padding: 24px;
 
 
 function DeleteShows() {
+
+    const { t } = useTranslation()
 
     const history = useHistory()
 
@@ -59,17 +62,17 @@ function DeleteShows() {
     return (
         <DeleteShowStyled onSubmit={submitForm}>
 
-            <h1>Delete Shows</h1>
+            <h1>{t("delete-show")}</h1>
             <br/>
-                <label htmlFor="show" className="show">Show's Name</label>
+                <label htmlFor="show" className="show">{t("show-name")}</label>
                 <br/>
                     <select name="show" id="show" {...showInput}>
                     {shows ? (shows.map (show => (
                         <option value={show._id} >{show.title}</option>
-                    ))) : (<option>Loading</option>)}
+                    ))) : (<option>{t("loading")}</option>)}
                     </select>
                     <br/>
-                    <button type='SUBMIT' className="send" >DELETE</button>
+                    <button type='SUBMIT' className="send" >{t("delete")}</button>
             
         </DeleteShowStyled>
     )

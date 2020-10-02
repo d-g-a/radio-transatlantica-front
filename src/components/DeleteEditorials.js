@@ -2,7 +2,8 @@ import React, {useState,useEffect} from 'react'
 import styled from 'styled-components'
 import useInput from '../hooks/useInput'
 import {useHistory} from 'react-router-dom'
-import {getAllEditorials, deleteEditorial} from '../services/editorial' 
+import {getAllEditorials, deleteEditorial} from '../services/editorial'
+import { useTranslation } from "react-i18next" 
 
 const DeleteEditorialStyled = styled.form`
 background-color: white;
@@ -30,6 +31,8 @@ padding: 24px;
 
 function DeleteEditorials() {
 
+    const { t } = useTranslation()
+
     const history = useHistory()
 
     const editorialInput = useInput("")
@@ -55,17 +58,17 @@ function DeleteEditorials() {
 
     return (
         <DeleteEditorialStyled  onSubmit={submitForm}>
-            <h1>Delete Editorial</h1>
+            <h1>{t("delete-editorial")}</h1>
             <br/>
-                <label htmlFor="editorial" className="editorial">Editorial's Name</label>
+                <label htmlFor="editorial" className="editorial">{t("editorial-name")}</label>
                 <br/>
                     <select name="editorial" id="editorial" {...editorialInput}>
                     {editorials ? (editorials.map(editorial=> (
                         <option value={editorial._id} >{editorial.headline}</option>
-                    ))) : (<option>Loading</option>)}
+                    ))) : (<option>{t("loading")}</option>)}
                     </select>
                     <br/>
-                    <button type='SUBMIT' className="send">DELETE</button>
+                    <button type='SUBMIT' className="send">{t("delete")}</button>
             
          
             

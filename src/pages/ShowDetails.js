@@ -5,6 +5,7 @@
   import ReactPlayer from "react-player"
   import {Link} from "react-router-dom"
   import {addShowLoved, deleteShowLoved} from "../services/index"
+  import { useTranslation } from "react-i18next"
  
 
   const ShowDetailsStyled = styled.div`
@@ -63,13 +64,17 @@ margin: 0;
 line-height: 1;
 }
 
-a{
+.show-guest{
    font-size: 40px;
    text-decoration: none;
    color: black;
    padding: 0 0 16px 24px;
-   margin-bottom: 16px;;
    line-height: 1;
+   text-transform: uppercase;
+}
+
+.by{
+    text-transform: none;
 }
 
 a:hover{
@@ -80,14 +85,12 @@ a:hover{
     text-transform: uppercase;
     color: #FF5C00;
     padding: 0 0 16px 24px;
-    margin-top: 16px;
     font-size: 24px;
-
 }
 
 .show-date{
-    font-size: 16px;
-    margin-left: 32px;
+    font-size: 24px;
+    margin-left: 40px;
 
 }
 
@@ -174,6 +177,8 @@ a:hover{
     const [love,setLove] = useState(false)
     const [play,setPlay] = useState(false)
 
+    const { t } = useTranslation()
+
     const { user } = useContext(MyContext)
 
     async function submitButton() {
@@ -225,8 +230,8 @@ a:hover{
                     <div className="full-container">   
                         <div className="container-info">
                             <p className="show-title">{show?.title}</p>
-                            <p><Link to={`/guests/${show.guest._id}`}>by {show?.guest.name}</Link></p>
-                            <p className="show-location">streamed from {show?.location}</p>
+                            <p className="show-guest by">{t("by")}<Link className="show-guest" to={`/guests/${show.guest._id}`}>{show?.guest.name}</Link></p>
+                            <p className="show-location">{t("stream")} {show?.location}</p>
                             <p className="show-date">{show?.date}</p>
                             <p className="show-genre">{show?.genre}</p>
                         </div>
@@ -258,7 +263,7 @@ a:hover{
                                             LOVED
                                         </button>
                                     )} 
-                            </div>) : (<p className="login-love"> Log in to save your favorite shows!</p>)}   
+                            </div>) : (<p className="login-love">{t("login-love")}</p>)}   
 
                             { !play ?
                                 <img onClick={playButton} src="https://res.cloudinary.com/dieglitter/image/upload/v1601068141/radio-shows/PLAY-BLACK_apz6vv.svg" alt="Play" className="play"/>   

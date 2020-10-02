@@ -183,7 +183,7 @@ function GuestPage({
     
                 </div>
             ) : (
-                <p>Loading...</p>
+                <p>{t("loading")}</p>
             )}      
         </GuestPageStyled>
     )

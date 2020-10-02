@@ -30,10 +30,8 @@ function Home() {
   return (
     <HomeStyled>
 
-        {/* <h1>LA DISTANCIA <br/>ES RELATIVA</h1> */}
         <Canvas width="100vw" height="100vh"/>
-        
-        
+                
     </HomeStyled>
   );
 }

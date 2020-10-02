@@ -195,8 +195,6 @@ function Profile({history}) {
                         onClick={() => submitDeleteButton(show?._id)}
                         id="showsLoved"
                         name="showsLoved"
-                        // onChange={e => setRemove(e.target.value)}
-                        // type="submit"
                         >{t("remove")}</button>   
                     </div>
                   

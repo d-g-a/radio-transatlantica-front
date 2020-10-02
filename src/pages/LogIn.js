@@ -144,7 +144,7 @@ function LogIn({history}) {
 
 
         <button className="button facebook">
-          <a href={`${baseURL}/auth/facebook`}> Facebook</a>
+          <a href={`${baseURL}/auth/facebook`}>Facebook</a>
         </button>
 
 

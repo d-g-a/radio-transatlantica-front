@@ -54,9 +54,6 @@ padding-top: 88px;
     justify-content: space-between;
 }
 
-.button-container {
-    
-}
 
 .button {
     background-color: white;

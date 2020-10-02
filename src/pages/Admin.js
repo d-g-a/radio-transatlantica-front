@@ -3,7 +3,6 @@ import {MyContext} from "../context"
 import ShowForm from '../components/ShowForm'
 import EditorialForm from '../components//EditorialForm'
 import GuestForm from '../components/GuestForm'
-import MakeAdmin from '../components/MakeAdmin'
 import styled from 'styled-components'
 import {logOut} from '../services/index'
 import { Redirect } from 'react-router-dom'
@@ -80,13 +79,6 @@ function Admin({history}) {
     const [delGuest, setDelGuest] = useState(false)
     const [delEditorial, setDelEditorial] = useState(false)
 
-    const {shows,setShows} = useState(null)
-
-    // async function fetchShows() {
-    //     const {data: {shows}} = await getShows()
-    //     setShows(shows)
-    //     console.log(shows)
-    // }
 
     
     function newShowForm(){
@@ -167,16 +159,10 @@ function Admin({history}) {
         history.push("/")
     }
 
-    // useEffect(() => {
-    //     fetchShows()
-    // }, [])
-
-
   
 
     return user ? (
         <AdminStyles>
-            {/* <h1>Admin Panel</h1> */}
             <div className="ButtonsLogo">
                 <img src="https://res.cloudinary.com/dieglitter/image/upload/v1601151897/radio-shows/rt-logo_cbvyz7.svg" alt="rt-logo" className="logo"/>
 
@@ -184,7 +170,6 @@ function Admin({history}) {
                     {!newShow ? (<button onClick={newShowForm} >{t("new-show")}</button>) : (<button onClick={newShowForm} >{t("cancel")}</button>)}
                     {!newGuest ? (<button onClick={newGuestForm} >{t("new-guest")}</button>) : (<button onClick={newGuestForm} >{t("cancel")}</button>)}
                     {!newEditorial ? (<button onClick={newEditorialForm} >{t("new-editorial")}</button>) : (<button onClick={newEditorialForm} >{t("cancel")}</button>)}
-                    {/* {!newAdmin ? (<button onClick={newAdminForm}>Add New Admin</button>) : (<button onClick={newAdminForm} >Cancel</button>)} */}
                     {!delShow? (<button onClick={deleteShow} >{t("delete-show")}</button>) : (<button onClick={deleteShow} >{t("cancel")}</button>)}
                     {!delGuest?( <button onClick={ deleteGuest} >{t("delete-guest")}</button>): (<button onClick={ deleteGuest} >{t("cancel")}</button>)}
                     {!delEditorial? (<button onClick={deleteEditorial} >{t("delete-editorial")}</button>) : (<button onClick={deleteEditorial} >{t("cancel")}</button>)}
@@ -199,8 +184,6 @@ function Admin({history}) {
                 ( <EditorialForm/> )} 
                 {newGuest && 
                 ( <GuestForm/> )}
-                {/* { newAdmin && 
-                (<MakeAdmin/>)} */}
                 { delGuest && 
                 (<DeleteGuest/>)}
                 { delEditorial && 

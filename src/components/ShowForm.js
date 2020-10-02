@@ -159,7 +159,6 @@ function ShowForm() {
                 name="image"
                 id="image"
                 onChange={uploadPhoto}
-                //{...imageInput}
                 />
                 <br/>
                 <label htmlFor="soundFile">{t("audio-file")}</label>
@@ -168,7 +167,6 @@ function ShowForm() {
                 name="soundFile"
                 id="soundFile" 
                 onChange={uploadAudio}
-                // {...soundFileInput}
                 />
                 <br/>
                 <label htmlFor="date">{t("when")}</label>

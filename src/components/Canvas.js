@@ -8,7 +8,6 @@ canvas{
     vertical-align: bottom;
     }
 `
-
 const Canvas = props => {
     
     const [aimX,setAimX] = useState(0)

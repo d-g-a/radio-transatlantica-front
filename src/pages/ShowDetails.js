@@ -246,17 +246,13 @@ a:hover{
                                     className="button"
                                     name="showsLoved" 
                                     id="showsLoved"
-                                    // value={showId} 
                                     onClick={loveButton}
-                                    // onSubmit={submitForm} 
-                                    // onChange={e => setShowsLoved(e.target.value)}
                                     >
                                         LOVE
                                     </button>) : (
                                         <button
                                         className="unlove"
-                                        onClick={unloveButton}
-                                        // value={showId} 
+                                        onClick={unloveButton} 
                                         id="showsLoved"
                                         name="showsLoved" 
                                         >
@@ -296,7 +292,7 @@ a:hover{
                 </div>
               </div >
               ) : (
-              <p className="loader">Loading...</p>
+              <p className="loader">{t("loading")}</p>
               ) }              
               
           </ShowDetailsStyled>

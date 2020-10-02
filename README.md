@@ -10,5 +10,7 @@ La idea central fue crear una estación de radio llamada Radio Transatlántica b
 
 El proyecto busca explorar la relación entre dos cabinas separadas por el océano atlántico pero unidas por el mismo servidor y pensadas como un archivo colectivo.
 <br/>
+##### RT Site :radio: 
+[Go to site!](https://radio-transatlantica.herokuapp.com/)
 <br/>
 <img src="https://res.cloudinary.com/dieglitter/image/upload/v1601076953/radio-shows/rt-logo-black_oa00al.png" width="400px" height="auto">
